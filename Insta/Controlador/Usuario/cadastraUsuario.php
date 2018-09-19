@@ -79,6 +79,8 @@ else if ($confirmaSenha != $senha)
 $erros[] = "As senhas devem ser iguais.";
 };
 
+$validar['senha'] = password_hash("md5", PASSWORD_DEFAULT);
+
 if ($email == false)
 {
 $erros[] = "Insira um e-mail válido.";
