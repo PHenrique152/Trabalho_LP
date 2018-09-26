@@ -2,8 +2,19 @@
 	require_once('Tabelas/dadosClientes.php');
 
 	// PENDENTE: Recuperar o usuário logado e os seus pedidos
-	// $cliente = ...;
-	// $pedidos = $cliente['pedidos'];
+	session_start();
+	if(array_key_exists('emailUserLogado', $_SESSION) == false)
+	{
+		$_SESSION['erroLogin'] = "Identifique-se para acessar seus pedidos";
+		header('Location:index.php');
+		exit();
+	}
+
+	$email = $_SESSION['emailUserLogado'];
+	$cliente = $dadosClientes[$email];
+
+	$pedidos = $cliente['pedidos'];
+
 
 	// Se der erro de classe NumberFormatter não encontrada, habilitar a extensão `extension=intl` no arquivo <XAMPP>/php/php.ini
 	$fmt = new NumberFormatter('pt_BR', NumberFormatter::CURRENCY);

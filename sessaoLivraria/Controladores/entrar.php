@@ -28,17 +28,21 @@
 	else if (password_verify($senha,
 	 					$dadosClientes[$email]['senha']) == false)
 						{
-							$erro = "Senha inválida";		
+							$erro = "Senha inválida";
 						}
 	// PENDENTE: Concluir a validação
 
 
-	// PENDENTE: Em caso de sucesso, redirecionar o usuário para a página de pedidos
-
-	// PENDENTE: Em caso de erro, redirecionar usuário para a página de login para exibir as mensagens de erro
 	if($erro != null){
 		session_start();
 		$_SESSION['erroLogin'] = $erro;
 		header('Location: ../index.php');
 }
+	else
+		{
+		session_start();
+		$_SESSION['emailUserLogado']= $email;
+
+		header ('Location: ../pedidos.php');
+	  }
 ?>

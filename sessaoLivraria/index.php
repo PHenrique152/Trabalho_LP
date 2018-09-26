@@ -1,11 +1,26 @@
 <?php
 	session_start();
+
+	if(array_key_exists('emailUserLogado', $_SESSION))
+	{
+		header("Location:index.php");
+		exit();
+	}
+
 	if(empty($_SESSION['erroLogin']) == false)
 	{
 		$erro = $_SESSION['erroLogin'];
 	}
+
+	if (array_key_exists('erroLogin',$_SESSION))
+	{
+	$erro = $_SESSION ['erroLogin'];
+	unset($_SESSION['erroLogin']);
+	}
+
 	else {
 		$erro = null;
+
 	}
 
 

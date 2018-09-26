@@ -152,6 +152,11 @@ else if ($visibilidade != 1 && $visibilidade != 2 && $visibilidade != 3)
      }
    }
 
+   if($erros = null){
+    session_start();
+    header('Location: ../../index.php');
+   }
+
 
 
  ?>
